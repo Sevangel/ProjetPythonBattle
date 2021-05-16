@@ -1,3 +1,5 @@
+from PlayerA import *
+from PlayerB import *
 import pygame
 import pygame.freetype
 import sys
@@ -74,3 +76,19 @@ class Game() :
         background = pygame.transform.scale(background,(LARGEUR, HAUTEUR))
 
         self.screen.blit(background,(0,0))
+
+    def gamescreen(self, surface):
+        self.xrect = 270
+        self.yrect = 380
+
+        rectcolor = (255,255,255)
+        backrectcolor = (0,0,0)
+
+        rectpos = [self.xrect,self.yrect,400,200]
+        backrectpos = [self.xrect-10,self.yrect-10,420,220]
+
+        pygame.draw.rect(surface, backrectcolor, backrectpos)
+        pygame.draw.rect(surface, rectcolor, rectpos)
+
+        
+        

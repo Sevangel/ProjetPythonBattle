@@ -4,6 +4,7 @@ import sys
 from Game import *
 from Données import *
 from Menu import *
+from Run import *
 
 #Chargement du jeu
 
@@ -17,13 +18,17 @@ frame_per_second = pygame.time.Clock()
 
 game = Game()
 menu = Menu()
+Joueur1 = PlayerA()
+Joueur2 = PlayerB()
+run = Run()
 
 #Etat de l'écran
 
 ecran = "FirstPage"
 PersoJ1 = ""
 PersoJ2 =""
-
+screen = pygame.display.set_mode((LARGEUR,HAUTEUR))
+WordChoice = ""
 
 #Boucle du jeu
 
@@ -117,12 +122,66 @@ while True :
 
     elif ecran == "Jeu" :
         game.gameplay()
+        Joueur1.healthbarJ1(screen)
+        Joueur2.healthbarJ2(screen)
+        Joueur1.textsideJ1(screen)
+        Joueur2.textsideJ2(screen)
+
+        if PersoJ1 == "Flynn" :
+            Joueur1.J1Flynn()
+
+        elif PersoJ1 == "Abuelita" :
+            Joueur1.J1Abuelita()
+
+        elif PersoJ1 == "Shrek" :
+            Joueur1.J1Shrek()
+
+        if PersoJ2 == "Flynn" :
+            Joueur2.J2Flynn()
+
+        elif PersoJ2 == "Abuelita" :
+            Joueur2.J2Abuelita()
+
+        elif PersoJ2 == "Shrek" :
+            Joueur2.J2Shrek()
+
+        game.gamescreen(screen)
+        run.wordpos(screen)
+
+        run.selectionmot()
 
         for event in pygame.event.get() :
 
             if event.type == pygame.QUIT :
                 pygame.quit()
                 sys.quit()
+
+            elif event.type == pygame.KEYDOWN :
+
+                if event.key == pygame.K_DOWN :
+                    run.moveselectiondown()
+ 
+                elif event.key == pygame.K_UP :
+                    run.moveselectionup()
+
+                elif event.key == pygame.K_RETURN and ecran == "Jeu" :
+                    if run.selecty == 40 :
+                        print("Choix 1")
+                        WordChoice = "1"
+                            
+                    elif run.selecty == 80 :
+                        print("Choix 2")
+                        WordChoice = "2"
+
+                    elif run.selecty == 120 :
+                        print("Choix 3")
+                        WordChoice = "3"
+
+                    elif run.selecty == 160 :
+                        print("Choix 4")
+                        WordChoice = "4"
+
+
 
 
     for event in pygame.event.get() :
