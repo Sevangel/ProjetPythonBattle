@@ -15,6 +15,14 @@ class Game() :
         self.y = 150
         self.ybutton = 100
 
+    def gamebulles(self) :
+        bulleJ1 = pygame.image.load("Ressources/BulleJ1.png")
+        bulleJ2 = pygame.image.load("Ressources/BulleJ2.png")
+
+        self.screen.blit(bulleJ1,(150,20))
+        self.screen.blit(bulleJ2,(180,-80))
+
+
     def gameselectJ1(self) :
         
         self.screen.fill((255,255,255))
@@ -90,5 +98,7 @@ class Game() :
         pygame.draw.rect(surface, backrectcolor, backrectpos)
         pygame.draw.rect(surface, rectcolor, rectpos)
 
-        
-        
+    def FinManche(self, surface) :
+        textfont = pygame.freetype.Font('Ressources/8bitwonder.ttf', 20)
+        button, rect = textfont.render("Fin de la Manche !", (0,0,0))
+        self.screen.blit(button, (self.x + 300, self.y + self.ybutton + 200))

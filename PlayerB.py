@@ -5,9 +5,8 @@ class PlayerB(pygame.sprite.Sprite) :
     def __init__(self):
         super().__init__()
         self.screen = pygame.display.set_mode((LARGEUR,HAUTEUR))
-        self.health = 300
+        self.healthJ2 = 300
         self.healthMax = 300
-        self.attack = 30
         self.surf = pygame.Surface((100,200))
         self.rect = self.surf.get_rect(center = (LARGEUR/2, 75))
 
@@ -15,7 +14,7 @@ class PlayerB(pygame.sprite.Sprite) :
         barcolor = (42,123,0)
         backbarcolor = (60,60,60)
 
-        barpos = [660,50,self.health,20]
+        barpos = [660,50,self.healthJ2,20]
         backbarpos = [660,50,self.healthMax,20]
 
 

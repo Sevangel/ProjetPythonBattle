@@ -1,6 +1,4 @@
-from types import LambdaType, coroutine
 import pygame
-from pygame.constants import GL_STENCIL_SIZE
 import pygame.freetype
 import sys
 from Game import *
